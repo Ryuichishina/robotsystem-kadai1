@@ -29,6 +29,8 @@ __used __section(__versions) = {
 	{ 0x5cf9db0a, "class_destroy" },
 	{ 0x7e1f9c52, "device_destroy" },
 	{ 0x58055dbb, "cdev_del" },
+	{ 0x6b4b2933, "__ioremap" },
+	{ 0xb2ead97c, "kimage_vaddr" },
 	{ 0x3bae1a24, "device_create" },
 	{ 0x92f847a3, "__class_create" },
 	{ 0x21872aaa, "cdev_add" },
@@ -49,4 +51,4 @@ __used __section(__versions) = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "8525D7939E229EA6BD4DEFC");
+MODULE_INFO(srcversion, "7DF91ED420EA771E19AF12C");
