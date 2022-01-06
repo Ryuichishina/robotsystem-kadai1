@@ -20,39 +20,55 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 {
 	char c;
 	if(copy_from_user(&c,buf,sizeof(char)))
-		return -EFAULT;
+	return -EFAULT;
 
-	printk(KERN_INFO "receive %c\n",c);
-	return 1;
+        if(c == '0')
+		gpio_base[10] = 1 << 25;
+	else if(c == '1')
+		gpio_base[7] = 1 << 25;
+
+//	printk(KERN_INFO "receive %c\n",c);
+	
+        
+        return 1;
 }
 
-static ssize_t sushi_read(struct file* filp, char*buf, size_t count, loff_t* pos)
-{
-	char c;
-	int size = 0;
-	char sushi[] = {0xF0,0x9F,0x8D,0xA3,0x0A};
-	if(copy_to_user(buf+size,(const char *)sushi, sizeof(sushi))){
-		
-		return -EFAULT;
-
-		if(c == '0')
-			gpio_base[10] = 1 <<25;
-		else if(c == '1')
-			gpio_base[7] = 1 <<25;
-		return 1;
-	}
-	size += sizeof(sushi);
-	return size;
-}
+//static ssize_t sushi_read(struct file* filp, char*buf, size_t count, loff_t* pos)
+//{
+//	char c;
+//	int size = 0;
+//	char sushi[] = {0xF0,0x9F,0x8D,0xA3,0x0A};
+//	if(copy_to_user(buf+size,(const char *)sushi, sizeof(sushi))		
+//		return -EFAULT;
+//
+//		if(c == '0')
+//			gpio_base[10] = 1 <<25;
+//		else if(c == '1')
+//			gpio_base[7] = 1 <<25;
+//		return 1;
+//	}
+//	size += sizeof(sushi);
+//	return size;
+//}
 
 static struct file_operations led_fops = {
 	.owner = THIS_MODULE,
-	.write = led_write,
-	.read = sushi_read
+	.write = led_write//,
+	//.read = sushi_read
 };
 
 static int __init init_mod(void)
 {
+        gpio_base = ioremap(0x3f200000,0xA0);
+
+	                const u32 led =25;
+			                const u32 index = led/10;
+					                const u32 shift = (led%10)*3;
+							                const u32 mask = ~(0x7 <<shift);
+									                gpio_base[index] = (gpio_base[index] &mask) | (0x1 << shift);
+
+
+
 	int retval;
 	retval = alloc_chrdev_region(&dev, 0,1,"myled");
 	if(retval < 0){
@@ -62,6 +78,7 @@ static int __init init_mod(void)
 	printk(KERN_INFO "%s is loaded. major:%d \n", __FILE__,MAJOR(dev));
 
 	cdev_init(&cdv, &led_fops);
+	cdv.owner = THIS_MODULE;
 	retval = cdev_add(&cdv, dev, 1);
 	if(retval < 0){
 		printk(KERN_ERR "cdev_add failed. major:%d. minor:%d\n",MAJOR(dev),MINOR(dev));
@@ -76,13 +93,6 @@ static int __init init_mod(void)
 
 		device_create(cls, NULL, dev,NULL,"myled", MINOR(dev));
 
-		gpio_base = ioremap(0x3f200000,0xA0);
-
-                const u32 led =25;
-		const u32 index = led/10;
-		const u32 shift = (led%10)*3;
-		const u32 mask = ~(0x7 <<shift);
-		gpio_base[index] = (gpio_base[index] &mask) | (0x1 << shift);
 
      	return 0;
 }
@@ -94,6 +104,7 @@ static int __init init_mod(void)
 	class_destroy(cls);
 	unregister_chrdev_region(dev, 1);
 	printk(KERN_INFO "%s is unloaded, major:%d\n", __FILE__,MAJOR(dev));
+	iounmap(gpio_base);
 }
 
 module_init(init_mod);

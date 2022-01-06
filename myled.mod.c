@@ -25,21 +25,21 @@ MODULE_INFO(retpoline, "Y");
 static const struct modversion_info ____versions[]
 __used __section(__versions) = {
 	{ 0xfe9bc451, "module_layout" },
+	{ 0xedc03953, "iounmap" },
 	{ 0x6091b333, "unregister_chrdev_region" },
 	{ 0x5cf9db0a, "class_destroy" },
 	{ 0x7e1f9c52, "device_destroy" },
 	{ 0x58055dbb, "cdev_del" },
-	{ 0x6b4b2933, "__ioremap" },
-	{ 0xb2ead97c, "kimage_vaddr" },
 	{ 0x3bae1a24, "device_create" },
 	{ 0x92f847a3, "__class_create" },
 	{ 0x21872aaa, "cdev_add" },
 	{ 0xe7bd1d8b, "cdev_init" },
+	{ 0xc5850110, "printk" },
 	{ 0xe3ec2f2b, "alloc_chrdev_region" },
-	{ 0x6cbbfc54, "__arch_copy_to_user" },
+	{ 0x6b4b2933, "__ioremap" },
+	{ 0xb2ead97c, "kimage_vaddr" },
 	{ 0xdecd0b29, "__stack_chk_fail" },
 	{ 0xd697e69a, "trace_hardirqs_on" },
-	{ 0xc5850110, "printk" },
 	{ 0x12a4e128, "__arch_copy_from_user" },
 	{ 0xec3d2e1b, "trace_hardirqs_off" },
 	{ 0x3d8560e4, "cpu_hwcaps" },
@@ -51,4 +51,4 @@ __used __section(__versions) = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "64508E866AEEB5D9D85EE54");
+MODULE_INFO(srcversion, "C56A8342E3A622935471462");
