@@ -41,11 +41,11 @@ static ssize_t sushi_read(struct file* filp, char*buf, size_t count, loff_t* pos
 		if(copy_to_user(buf+size,(const char *)sushi, sizeof(sushi))){	
 		return -EFAULT;
 
-		if(c == '0')
-			gpio_base[10] = 1 <<25;
-		else if(c == '1')
-			gpio_base[7] = 1 <<25;
-		return 1;
+//		if(c == '0')
+//			gpio_base[10] = 1 <<25;
+//		else if(c == '1')
+//			gpio_base[7] = 1 <<25;
+//		return 1;
 	}
 	size += sizeof(sushi);
 	return size;
