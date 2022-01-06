@@ -38,6 +38,7 @@ __used __section(__versions) = {
 	{ 0xe3ec2f2b, "alloc_chrdev_region" },
 	{ 0x6b4b2933, "__ioremap" },
 	{ 0xb2ead97c, "kimage_vaddr" },
+	{ 0x6cbbfc54, "__arch_copy_to_user" },
 	{ 0xdecd0b29, "__stack_chk_fail" },
 	{ 0xd697e69a, "trace_hardirqs_on" },
 	{ 0x12a4e128, "__arch_copy_from_user" },
@@ -51,4 +52,4 @@ __used __section(__versions) = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "60896D0F84E7955F319250A");
+MODULE_INFO(srcversion, "084C5ACBC66DF6968D8ABCD");
