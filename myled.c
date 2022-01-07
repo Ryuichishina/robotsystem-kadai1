@@ -13,6 +13,9 @@ MODULE_VERSION("0.0.1");
  static dev_t dev;
  static struct cdev cdv;
  static struct class *cls = NULL;
+ static volatile u32 *gpio_base = NULL;
+
+
 
 static ssize_t led_write(struct file*filp, const char*buf, size_t count, loff_t*pos)
 {
@@ -69,6 +72,8 @@ static struct file_operations led_fops = {
 	  }
 
 	  device_create(cls, NULL,dev,NULL,"myled%d", MINOR(dev));
+
+	  gpio_base = ioremap_nocache(0xfe200000, 0xA0);
 
 	return 0;
 }
