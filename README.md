@@ -28,7 +28,9 @@
  
 ⑤$ echo 0 > /dev/myled0
 　//これによりLEDが消えます
- 
+
+# 実行動画　
+https://youtu.be/Pbw2TQ349b0
 
 
 
