@@ -2,7 +2,7 @@
 
 このプログラムは、LEDを発光させるものです。
 
-#使用するもの
+# 使用するもの
 
 ・Raspberry Pi 4 Computer Model B 4GB　
 
@@ -15,6 +15,20 @@
 ・ジャンパー線　　　2本
 
 ・USBコード（Type-C）　　1本
+
+# 使用方法
+①コードを入力
+
+②＄sudo insmod myled.ko
+
+③$ sudo chmod 666 /dev/myled0
+
+④$ echo 1 > /dev/myled0
+　//これによりLEDが着きます
+ 
+⑤$ echo 0 > /dev/myled0
+　//これによりLEDが消えます
+ 
 
 
 
