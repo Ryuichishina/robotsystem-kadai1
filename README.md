@@ -18,7 +18,10 @@
 
 # 繋げ方
 
-https://mail.google.com/mail/u/1/#drafts?projector=1
+![1](https://user-images.githubusercontent.com/95426761/148651410-f9a84966-409b-4f73-befb-12a357b52c5c.jpg)基盤写真(GPIO 25ピン→抵抗→LED→GND)
+![1](https://user-images.githubusercontent.com/95426761/148651555-baf01649-c5a6-4bfa-8387-1535d9bde0d3.jpg)Raspberryの写真(グレーがGPIO25ピン、紫がGNDに接続しています)
+
+
 
 # 使用方法
 ①コードを入力
