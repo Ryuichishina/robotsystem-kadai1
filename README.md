@@ -2,7 +2,7 @@
 
 このプログラムは、LEDを発光させるものです。
 
-使用するもの
+使用するもの使用するもの
 
 ・Raspberry Pi 4 Computer Model B 4GB　
 
