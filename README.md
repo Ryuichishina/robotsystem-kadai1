@@ -16,6 +16,10 @@
 
 ・USBコード（Type-C）　　1本
 
+# 繋げ方
+
+https://mail.google.com/mail/u/1/#drafts?projector=1
+
 # 使用方法
 ①コードを入力
 
